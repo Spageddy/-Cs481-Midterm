@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+    ios:Page.UseSafeArea="true"
+    xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+    x:Class="Midterm.Search">
+        <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="150">
+            <xfg:GradientStep StepColor="#6699ff" StepPercentage="0" />
+            
+            <xfg:GradientStep StepColor="#33ccff" StepPercentage="1" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
+    <ContentPage.Content>
+        
+        <StackLayout Margin="10">
+            
+            <!-- search Bar and button frame -->
+            <StackLayout Orientation="Horizontal">
+              <Entry x:Name="searchEntry"
+                     Margin="5,0,0,0"
+                     TextColor="#505050"
+                     Placeholder="Enter Stock Symbol"
+                     WidthRequest="350"/>
+              <Button x:Name="searchButton"
+                      Margin="0,0,10,0"
+                      TextColor="Gray"
+                      HeightRequest="30"
+                      WidthRequest="30"
+                      VerticalOptions="Fill"
+                      HorizontalOptions="Fill"
+                      BackgroundColor="Transparent"
+                      Image="search.png"
+                      Clicked="Search_Clicked"/>
+            </StackLayout>
+            
+            <!-- highest lowest frame -->
+                 <Frame x:Name="frame2"
+                   IsVisible="false"
+                   CornerRadius="7"
+                   Margin="5,1,5,1">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label x:Name="highestLabel"
+                       TextColor="#505050"
+                       FontSize="Large"/> 
+                  <Label x:Name="lowestLabel"
+                       TextColor="#505050"
+                       FontSize="Large"/>
+                    </StackLayout>
+            </Frame>
+            
+            <!-- List frame -->
+            <Frame x:Name="frame"
+                   IsVisible="false"
+                   CornerRadius="7"
+                   Margin="5,1,5,1">
+            <ListView x:Name="stockDataListView"
+                      BackgroundColor="Transparent"
+                      IsVisible="false"
+                      HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding TheDate,StringFormat='{0: MMM   dd}'}"
+                                       TextColor="#505050"
+                                       FontSize="Medium"/>
+                                <StackLayout Orientation="Vertical"
+                                             Margin="10">
+                                    <Label Text="{Binding TheHigh,StringFormat='High: ${0}'}"
+                                           TextColor="Gray"
+                                           FontSize="Small"/>
+                                    <Label Text="{Binding TheLow,StringFormat='Low: ${0}'}"
+                                           TextColor="Gray"
+                                           FontSize="Small"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical"
+                                             Margin="10">
+                                    <Label Text="{Binding TheOpen,StringFormat='Open: ${0}'}"
+                                           TextColor="Gray"
+                                           FontSize="Small"/>
+                                    <Label Text="{Binding TheClose,StringFormat='Close: ${0}'}"
+                                           TextColor="Gray"
+                                           FontSize="Small"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+          </Frame>
+            
+        </StackLayout>
+       
+    </ContentPage.Content>
+</ContentPage>

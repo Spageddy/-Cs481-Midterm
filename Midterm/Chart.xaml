@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+    ios:Page.UseSafeArea="true"
+    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+    Appearing="Handle_Appearing"
+    x:Class="Midterm.Chart">
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="150">
+            <xfg:GradientStep StepColor="#6699ff" StepPercentage="0" />
+            <xfg:GradientStep StepColor="#33ccff" StepPercentage="1" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
+    <ContentPage.Content>
+        
+        <StackLayout VerticalOptions="Center">
+            <!-- 30 day chart frame -->
+        <Frame x:Name="Frame1"
+               CornerRadius="10"
+               IsVisible="false"
+               Padding="0"
+               Margin="15,0,15,5"
+               >
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+          
+            <microcharts:ChartView
+                x:Name="Chart1"
+                Margin="1,5,1,0"
+                HeightRequest="250"
+                WidthRequest="800"/>
+            <Label 
+                HorizontalTextAlignment="Center" 
+                Text="Last 30 Days"
+                FontSize="Large"
+                TextColor="Gray"/>
+        </StackLayout>
+      </Frame>
+            
+            <!-- 100 day chart frame -->
+        <Frame x:Name="Frame2"
+               CornerRadius="10"
+               IsVisible="false"
+               Padding="0"
+               Margin="15,5,15,0">
+        <StackLayout 
+             HorizontalOptions="CenterAndExpand"
+             VerticalOptions="CenterAndExpand">
+            <microcharts:ChartView
+                x:Name="Chart2"
+                Margin="1,5,1,0"
+                HeightRequest="250"
+                WidthRequest="800"/>
+            <Label 
+                HorizontalTextAlignment="Center" 
+                Text="Last 100 Days"
+                FontSize="Large"
+                TextColor="Gray"/>
+        </StackLayout>
+    </Frame>
+            
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
