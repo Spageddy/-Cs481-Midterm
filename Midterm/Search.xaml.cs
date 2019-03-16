@@ -99,7 +99,7 @@ namespace Midterm
             //entry is empty or null
             else 
             {
-                frame.IsVisible = true;
+                frame.IsVisible = false;
                 stockDataListView.IsVisible = false;
                 await DisplayAlert("Error", "Sorry, must enter a stock symbol.", "Try again!");
             }
