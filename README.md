@@ -23,6 +23,6 @@ Use Microcharts to display the high price of a stock over at least the past 30 d
 The app should look clean and organized, put some effort into making it a good looking UI
 
 IOS:
-<img src="https://github.com/Spageddy/Cs481-Midterm/blob/master/Images/ios.gif" width="311" height="672">
+<img src="https://github.com/Spageddy/Cs481-Midterm/blob/master/Images/ios.gif" width="320" height="640">
 Android:
 <img src="https://github.com/Spageddy/Cs481-Midterm/blob/master/Images/android.gif" width="360" height="640">
