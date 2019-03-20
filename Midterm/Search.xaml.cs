@@ -14,6 +14,7 @@ namespace Midterm
     {
         public static ObservableCollection<TimeSeriesDaily> dailyList;
         public static bool IsEntryNull = true;
+
         public Search()
         {
             InitializeComponent();
@@ -44,8 +45,9 @@ namespace Midterm
                     //symbol was not found
                     if (stockdata.MetaData == null)
                     {
-                        stockDataListView.IsVisible = false;
+                        ShowNothing();
                         await DisplayAlert("Error", "Sorry, stock symbol not found.", "Try again!");
+
                     }
                     //symbol was found
                     else
@@ -75,6 +77,7 @@ namespace Midterm
                             i++;
                         }
 
+                        ShowNothing();
 
                         highestLabel.Text = "Highest $" + highest;
                         lowestLabel.Text = "Lowest $" + lowest;
@@ -99,10 +102,17 @@ namespace Midterm
             //entry is empty or null
             else 
             {
-                frame.IsVisible = false;
-                stockDataListView.IsVisible = false;
+                ShowNothing();
                 await DisplayAlert("Error", "Sorry, must enter a stock symbol.", "Try again!");
             }
+        }
+
+        private void ShowNothing()
+        {
+            IsEntryNull = true;
+            frame2.IsVisible = false;
+            frame.IsVisible = false;
+            stockDataListView.IsVisible = false;
         }
     }
 }   

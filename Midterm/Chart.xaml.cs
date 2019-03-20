@@ -146,6 +146,12 @@ namespace Midterm
                 await Frame1.TranslateTo(0, 0, 1000, Easing.BounceIn);
                 await Frame2.TranslateTo(0, 0, 1000, Easing.BounceIn);
             }
+            else
+            {
+                Frame1.IsVisible = false;
+                Frame2.IsVisible = false;
+
+            }
 
         }
     }
