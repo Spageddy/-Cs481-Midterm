@@ -5,7 +5,9 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
     ios:Page.UseSafeArea="true"
     xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     x:Class="Midterm.Search">
+    
         <xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient Rotation="150">
             <xfg:GradientStep StepColor="#6699ff" StepPercentage="0" />
@@ -35,7 +37,7 @@
                       Image="search.png"
                       Clicked="Search_Clicked"/>
             </StackLayout>
-            
+        
             <!-- highest lowest frame -->
                  <Frame x:Name="frame2"
                    IsVisible="false"
@@ -50,6 +52,21 @@
                        FontSize="Large"/>
                     </StackLayout>
             </Frame>
+            
+              <!--loading animation -->
+            <StackLayout VerticalOptions="Center">
+            <forms:AnimationView 
+                x:Name="loading"
+                Animation="loading.json" 
+                Loop="true" 
+                AutoPlay="true"
+                HeightRequest="300"
+                WidthRequest="300"
+                Margin="0,10,0,0"
+                IsVisible="false"
+                VerticalOptions="Center"
+            />
+            </StackLayout>
             
             <!-- List frame -->
             <Frame x:Name="frame"
@@ -91,8 +108,6 @@
                 </ListView.ItemTemplate>
             </ListView>
           </Frame>
-            
         </StackLayout>
-       
     </ContentPage.Content>
 </ContentPage>

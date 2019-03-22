@@ -6,6 +6,7 @@ using System.Net.Http;
 using Midterm.Models;
 using Newtonsoft.Json;
 using Xamarin.Forms;
+using Lottie.Forms;
 
 
 namespace Midterm
@@ -22,6 +23,9 @@ namespace Midterm
 
       async void Search_Clicked(object sender, System.EventArgs e)
         {
+            ShowNothing();
+            loading.IsVisible = true;
+
             //entry isnt empty or null
             if (!string.IsNullOrEmpty(searchEntry.Text))
             {
@@ -46,6 +50,8 @@ namespace Midterm
                     if (stockdata.MetaData == null)
                     {
                         ShowNothing();
+                        loading.IsVisible = false;
+                        IsEntryNull = true;
                         await DisplayAlert("Error", "Sorry, stock symbol not found.", "Try again!");
 
                     }
@@ -77,42 +83,51 @@ namespace Midterm
                             i++;
                         }
 
-                        ShowNothing();
-
-                        highestLabel.Text = "Highest $" + highest;
-                        lowestLabel.Text = "Lowest $" + lowest;
+                        //loading.IsVisible = false;
+                       
 
                         await frame.TranslateTo(0,1000,0);
                         await frame2.TranslateTo(1000,0, 0);
 
                         frame.IsVisible = true;
                         frame2.IsVisible = true;
-                        stockDataListView.ItemsSource = dailyList;
-                        stockDataListView.IsVisible = true;
+                       // stockDataListView.ItemsSource = dailyList;
+
+                        loading.IsVisible = false;
 
                         await frame.TranslateTo(0, 0, 1000, Easing.BounceIn);
                         await frame2.TranslateTo(0, 0, 1000, Easing.BounceIn);
 
                         stockDataListView.ItemsSource = dailyList;
+                        highestLabel.Text = "Highest $" + highest;
+                        lowestLabel.Text = "Lowest $" + lowest;
                         stockDataListView.IsVisible = true;
+                        highestLabel.IsVisible = true;
+                        lowestLabel.IsVisible = true;
 
                     }
-                } 
+                }
             }
             //entry is empty or null
             else 
             {
                 ShowNothing();
+                loading.IsVisible = false;
+                IsEntryNull = true;
                 await DisplayAlert("Error", "Sorry, must enter a stock symbol.", "Try again!");
             }
+
         }
 
         private void ShowNothing()
         {
-            IsEntryNull = true;
+
             frame2.IsVisible = false;
             frame.IsVisible = false;
             stockDataListView.IsVisible = false;
+            highestLabel.IsVisible = false;
+            lowestLabel.IsVisible = false;
+
         }
     }
 }   
