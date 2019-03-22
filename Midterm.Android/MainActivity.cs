@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+using Lottie.Forms.Droid;
 namespace Midterm.Droid
 {
     [Activity(Label = "Midterm", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -19,6 +20,7 @@ namespace Midterm.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            AnimationViewRenderer.Init();
             LoadApplication(new App());
         }
     }
