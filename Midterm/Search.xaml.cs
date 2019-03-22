@@ -82,17 +82,13 @@ namespace Midterm
 
                             i++;
                         }
-
-                        //loading.IsVisible = false;
-                       
-
+                      
                         await frame.TranslateTo(0,1000,0);
                         await frame2.TranslateTo(1000,0, 0);
 
                         frame.IsVisible = true;
                         frame2.IsVisible = true;
-                       // stockDataListView.ItemsSource = dailyList;
-
+                   
                         loading.IsVisible = false;
 
                         await frame.TranslateTo(0, 0, 1000, Easing.BounceIn);
@@ -101,6 +97,7 @@ namespace Midterm
                         stockDataListView.ItemsSource = dailyList;
                         highestLabel.Text = "Highest $" + highest;
                         lowestLabel.Text = "Lowest $" + lowest;
+
                         stockDataListView.IsVisible = true;
                         highestLabel.IsVisible = true;
                         lowestLabel.IsVisible = true;
@@ -121,7 +118,6 @@ namespace Midterm
 
         private void ShowNothing()
         {
-
             frame2.IsVisible = false;
             frame.IsVisible = false;
             stockDataListView.IsVisible = false;
